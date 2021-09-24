@@ -38,11 +38,12 @@
 @media only screen and (max-width: 768px) {
 	.signup {
 		&-container {
-			width: 100vw;
-			height: 100vh;
+			min-height: 100vh;
+			height: max-content;
 			border-radius: 0;
 			grid-template-columns: unset;
 			grid-auto-rows: 20% auto;
+			gap: 0;
 		}
 	}
 }

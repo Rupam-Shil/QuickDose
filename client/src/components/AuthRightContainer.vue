@@ -30,11 +30,12 @@
 	.signup-main {
 		.logo {
 			img {
+				display: none;
 				width: 40px;
 			}
 		}
 		.main-container {
-			width: 100%;
+			height: max-content;
 		}
 	}
 }

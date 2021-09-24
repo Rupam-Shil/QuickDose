@@ -22,6 +22,7 @@
 						</button>
 					</div>
 				</div>
+				<br />
 				<div class="email-area" v-if="isEmailVisible">
 					<div class="part2 text">
 						and you would like to signup with email address
@@ -43,6 +44,7 @@
 						</button>
 					</div>
 				</div>
+				<br />
 				<br />
 				<br />
 				<div class="password-area" v-if="isPasswordVisible">
@@ -71,6 +73,9 @@
 						</button>
 					</div>
 				</div>
+				<br />
+				<br />
+				<br />
 				<div class="success-area" v-if="isSuccessedVisible">
 					<span class=" text part5">
 						Great! You are all set 🎉
