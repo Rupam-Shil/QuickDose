@@ -1,6 +1,32 @@
 <template>
-	<router-view />
+	<div>
+		<div class="isMobile" v-if="isMobile">
+			<div class="isMobile-text">
+				Sorry 😢!! Our website is only available on big screens
+			</div>
+		</div>
+		<router-view v-else />
+	</div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+const isMobile = ref(false);
+const width = window.innerWidth;
+
+window.addEventListener('resize', () => {
+	checkInMobile();
+});
+
+const checkInMobile = () => {
+	if (window.innerWidth < 768) {
+		isMobile.value = true;
+	} else {
+		isMobile.value = false;
+	}
+};
+checkInMobile();
+</script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
@@ -33,5 +59,21 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	background: var(--bg-color);
+}
+.isMobile {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background: var(--blue-gradient-mobile);
+}
+.isMobile-text {
+	font-size: 2rem;
+	color: #fff;
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	font-weight: 500;
 }
 </style>
