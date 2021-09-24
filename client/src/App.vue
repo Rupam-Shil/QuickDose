@@ -26,6 +26,9 @@
 		hsl(217, 67%, 54%) 90%
 	);
 	--light-blue: #5890eb;
+	--grey-text: #686c73;
+	--black-text: #000;
+	--warning: #fe5157;
 }
 body {
 	font-family: 'Poppins', sans-serif;

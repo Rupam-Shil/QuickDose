@@ -8,7 +8,9 @@
 		</div>
 		<div class="link-area">
 			<p class="link-area-text">{{ props.linkText }}</p>
-			<router-link class="link-area-link" :to="props.linkTo">Login</router-link>
+			<router-link class="link-area-link" :to="props.linkTo">{{
+				props.linkToText
+			}}</router-link>
 		</div>
 	</div>
 </template>
@@ -29,6 +31,10 @@ const props = defineProps({
 	linkText: {
 		type: String,
 		default: 'Have an account?',
+	},
+	linkToText: {
+		type: String,
+		default: 'Login',
 	},
 	linkTo: {
 		type: String,
@@ -72,7 +78,6 @@ const props = defineProps({
 		background: var(--light-blue);
 		width: 100%;
 		padding: 1rem;
-		text-align: center;
 		border-radius: 1rem;
 		&-text {
 			font-size: clamp(0.8rem, 3vw, 1rem);
@@ -105,6 +110,8 @@ const props = defineProps({
 		.link-area {
 			padding: 0.5rem;
 			border-radius: 1rem;
+			text-align: center;
+
 			&-text {
 				line-height: 100%;
 			}
