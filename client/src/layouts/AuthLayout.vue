@@ -17,11 +17,11 @@
 }
 .signup {
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	@include fcenter();
 	&-container {
-		width: 98%;
-		height: 95%;
+		width: 98vw;
+		min-height: 95vh;
 		background: var(--white);
 		border-radius: 1rem;
 		padding: 1rem;

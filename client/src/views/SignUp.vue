@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<br />
-				<br />
+				<br v-if="isSmallHeight" />
 				<br />
 				<div class="password-area" v-if="isPasswordVisible">
 					<span class=" text part3">
@@ -74,13 +74,13 @@
 					</div>
 				</div>
 				<br />
-				<br />
-				<br />
+				<br v-if="isSmallHeight" />
+				<br v-if="isSmallHeight" />
 				<div class="success-area" v-if="isSuccessedVisible">
 					<span class=" text part5">
 						Great! You are all set 🎉
 					</span>
-					<button class="signupbtn">Create Account</button>
+					<button class="signupbtn" @click="sendDetails">Create Account</button>
 				</div>
 			</div>
 		</AuthRightContainer>
@@ -91,12 +91,16 @@
 import AuthLayout from '../layouts/AuthLayout.vue';
 import AuthSidebar from '../components/AuthSidebar.vue';
 import AuthRightContainer from '../components/AuthRightContainer.vue';
+
 import { ref } from 'vue';
 import gsap from 'gsap';
+import { sendDataPost } from '../composables/fromAxios.js';
 //data
 const isEmailVisible = ref(false);
 const isPasswordVisible = ref(false);
 const isSuccessedVisible = ref(false);
+
+const isSmallHeight = ref(false);
 //input values
 const nameValue = ref('');
 const emailValue = ref('');
@@ -107,6 +111,7 @@ const inputemail = ref('');
 const inputPassword = ref('');
 
 //methods
+
 const makeVisible = (toCheck, el, extraFunction = null) => {
 	if (toCheck === '' || toCheck === null) {
 		gsapInputInvalid(el);
@@ -158,12 +163,31 @@ const passWordValidator = () => {
 	const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 	return re.test(passwordValue.value);
 };
+const sendDetails = async () => {
+	const details = {
+		name: nameValue.value.toLowerCase(),
+		email: emailValue.value.toLowerCase(),
+		password: passwordValue.value,
+	};
+	const data = await sendDataPost('http://localhost:5000/auth/signup', details);
+	console.log(data);
+};
+
+const checkSmallheight = () => {
+	if (window.innerHeight < 600) {
+		isSmallHeight.value = false;
+	} else {
+		isSmallHeight.value = true;
+	}
+};
+checkSmallheight();
 </script>
 
 <style lang="scss" scoped>
 @mixin animationChar($char) {
 	animation: reveal 1s ease-in-out forwards;
 	animation-timing-function: steps($char, end);
+	animation-delay: 0.2s;
 }
 .arrow {
 	outline: none;

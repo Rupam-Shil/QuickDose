@@ -23,7 +23,8 @@
 	}
 	.main-container {
 		width: 100%;
-		height: 60%;
+		min-height: 60%;
+		height: max-content;
 	}
 }
 @media only screen and (max-width: 768px) {
