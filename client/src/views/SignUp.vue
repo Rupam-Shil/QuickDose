@@ -118,6 +118,16 @@ const store = useStore();
 const router = useRouter();
 // const userDetails = computed(() => store.state.userDetails);
 
+//session storage
+(() => {
+	let user = sessionStorage.getItem('userDetails');
+	if (user) {
+		user = JSON.parse(user);
+		store.commit('setUserDetails', user);
+		router.push(`/${user.id}`);
+	}
+})();
+
 //methods
 
 const makeVisible = (toCheck, el, extraFunction = null) => {
@@ -180,6 +190,7 @@ const sendDetails = async () => {
 	const data = await sendDataPost('http://localhost:5000/auth/signup', details);
 	if (!data.error) {
 		store.commit('setUserDetails', data);
+		sessionStorage.setItem('userDetails', JSON.stringify(data));
 		router.push('/topic');
 	} else {
 		console.log(data.error);

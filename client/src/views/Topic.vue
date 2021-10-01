@@ -62,8 +62,8 @@
 </template>
 
 <script setup>
-import { isSignedUp } from '@/composables/isAuthed.js';
-isSignedUp();
+// import { isSignedUp } from '@/composables/isAuthed.js';
+// isSignedUp();
 </script>
 
 <style lang="scss" scoped>
