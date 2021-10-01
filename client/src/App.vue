@@ -55,6 +55,9 @@ checkInMobile();
 	--grey-text: #686c73;
 	--black-text: #000;
 	--warning: #fe5157;
+	--very-lght-blue: #e3ebf6;
+	--light-gray-bg: #f8f8fa;
+	--lime-green: #30c862;
 }
 body {
 	font-family: 'Poppins', sans-serif;
