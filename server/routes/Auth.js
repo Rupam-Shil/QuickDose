@@ -42,4 +42,14 @@ router.post(
 	}
 );
 
+router.put('/interest', async (req, res) => {
+	try {
+		const { interest, id } = req.body;
+		const user = await User.findByIdAndUpdate(id, { interest: interest });
+		res.json({ interest: user.interest });
+	} catch (err) {
+		console.log(err);
+	}
+});
+
 module.exports = router;

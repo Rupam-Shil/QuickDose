@@ -17,7 +17,12 @@
 			</div>
 			<div class="interest-topics">
 				<div class="each-item">
-					<input type="checkbox" class="interests" />
+					<input
+						type="checkbox"
+						v-model="choosedTopics"
+						value="international"
+						class="interests"
+					/>
 					<div class="each-item-content">
 						<i class="uil uil-camera"></i>
 						<p>
@@ -27,7 +32,12 @@
 				</div>
 
 				<div class="each-item">
-					<input type="checkbox" class="interests" />
+					<input
+						type="checkbox"
+						v-model="choosedTopics"
+						value="business"
+						class="interests"
+					/>
 					<div class="each-item-content">
 						<i class="uil uil-suitcase"></i>
 						<p>
@@ -36,7 +46,12 @@
 					</div>
 				</div>
 				<div class="each-item">
-					<input type="checkbox" class="interests" />
+					<input
+						type="checkbox"
+						v-model="choosedTopics"
+						value="entertainment"
+						class="interests"
+					/>
 					<div class="each-item-content">
 						<i class="uil uil-play"></i>
 						<p>
@@ -45,7 +60,12 @@
 					</div>
 				</div>
 				<div class="each-item">
-					<input type="checkbox" class="interests" />
+					<input
+						type="checkbox"
+						v-model="choosedTopics"
+						value="sports"
+						class="interests"
+					/>
 					<div class="each-item-content">
 						<i class="uil uil-volleyball"></i>
 						<p>
@@ -54,7 +74,12 @@
 					</div>
 				</div>
 				<div class="each-item">
-					<input type="checkbox" class="interests" />
+					<input
+						type="checkbox"
+						v-model="choosedTopics"
+						value="health"
+						class="interests"
+					/>
 					<div class="each-item-content">
 						<i class="uil uil-dumbbell"></i>
 						<p>Health</p>
@@ -63,7 +88,7 @@
 			</div>
 			<footer>
 				<button>⟵ Previous Step</button>
-				<button @click="showModal = true">Next Step ⟶</button>
+				<button @click="sendRequest">Next Step ⟶</button>
 			</footer>
 		</div>
 		<div class="bx" v-if="showModal">
@@ -84,18 +109,36 @@
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
+
+// isSignedUp();
 
 const store = useStore();
 const router = useRouter();
 
 const userId = computed(() => store.state.userDetails);
 
+//Input bindings
+const choosedTopics = ref([]);
+
 const pushToHome = () => {
 	router.push(`/${userId.value.id}`);
 };
-// isSignedUp();
 
 const showModal = ref(false);
+
+const sendRequest = async () => {
+	console.log(choosedTopics.value.length);
+	if (choosedTopics.value.length > 0) {
+		const res = await axios.put('http://localhost:5000/auth/interest', {
+			interest: choosedTopics.value,
+			id: userId.value.id,
+		});
+		showModal.value = true;
+	} else {
+		return;
+	}
+};
 </script>
 
 <style lang="scss" scoped>
