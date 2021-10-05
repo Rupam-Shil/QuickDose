@@ -11,6 +11,7 @@
 	"dependencies": {
 		"axios": "^0.21.4",
 		"core-js": "^3.6.5",
+		"date-fns": "^2.25.0",
 		"gsap": "^3.7.1",
 		"loadash": "^1.0.0",
 		"vue": "^3.0.0",
