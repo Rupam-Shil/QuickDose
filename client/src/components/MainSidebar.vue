@@ -2,8 +2,8 @@
 	<div class="mainsidebar">
 		<div class="user-details">
 			<div class="user-image"></div>
-			<div class="current-date">Feb 02, 2020</div>
-			<div class="current-time">08:43am</div>
+			<div class="current-date">{{ currentDate }}</div>
+			<div class="current-time">{{ currentTime }}</div>
 		</div>
 		<div class="page-links">
 			<router-link to="/home"
@@ -34,41 +34,41 @@
 			</div>
 			<div class="upgrade-box-right">
 				<svg
-					width="553"
-					height="563"
-					viewBox="0 0 553 563"
+					width="569"
+					height="580"
+					viewBox="0 0 569 580"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
 					<path
-						d="M2 103.5V446L285.5 560.5M2 103.5L285.5 209M2 103.5L285.5 3L550.5 103.5M285.5 560.5L550.5 446V103.5M285.5 560.5V209M550.5 103.5L285.5 209"
+						d="M10 111.5V454L293.5 568.5M10 111.5L293.5 217M10 111.5L293.5 11L558.5 111.5M293.5 568.5L558.5 454V111.5M293.5 568.5V217M558.5 111.5L293.5 217"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 					<path
-						d="M110.694 106.244L290.806 40.7563"
+						d="M118.694 114.244L298.806 48.7563"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 					<path
-						d="M147 123.839L327.113 58.3513"
+						d="M155 131.839L335.113 66.3513"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 					<path
-						d="M201 137.839L381.113 72.3513"
+						d="M209 145.839L389.113 80.3513"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 					<path
-						d="M237 150.839L417.113 85.3513"
+						d="M245 158.839L425.113 93.3513"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 					<path
-						d="M267 167.839L447.113 102.351"
+						d="M275 175.839L455.113 110.351"
 						stroke="white"
-						stroke-width="4"
+						stroke-width="20"
 					/>
 				</svg>
 			</div>
@@ -76,7 +76,25 @@
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+import { format } from 'date-fns';
+import { ref } from 'vue';
+const currentDate = ref('');
+const currentTime = ref('');
+//methods
+const getDate = () => {
+	const date = new Date();
+	currentDate.value = `${format(date, 'MMMM do, yyyy')}`;
+};
+const getTime = () => {
+	setInterval(() => {
+		const date = new Date();
+		currentTime.value = `${format(date, 'hh:mm a')}`;
+	}, 1000);
+};
+getDate();
+getTime();
+</script>
 
 <style lang="scss" scoped>
 .mainsidebar {
@@ -124,24 +142,35 @@
 				border-radius: 0.2rem;
 				background: var(--very-lght-blue);
 			}
+			&:hover {
+				color: #000;
+				font-weight: 600;
+				.icon-box {
+					background: var(--dark-blue);
+					color: var(--white);
+				}
+			}
 		}
 	}
 	.upgrade-box {
-		width: 80%;
+		width: 90%;
 		background: var(--blue-gradient);
 		border-radius: 1rem;
 		color: var(--white);
 		display: flex;
 		padding: 1rem;
+		height: 6rem;
 		justify-content: space-between;
 		&-left {
 			p {
 				font-weight: 600;
+				line-height: 80%;
 			}
 			span {
-				font-size: 0.9rem;
+				display: block;
+				font-size: 0.8rem;
 				color: var(--very-lght-blue);
-				margin-bottom: 1rem;
+				margin-bottom: 0.7rem;
 			}
 			button {
 				display: block;
@@ -151,6 +180,7 @@
 				color: var(--white);
 				padding: 0.3rem 1.2rem;
 				border-radius: 5px;
+				font-weight: 600;
 			}
 		}
 		&-right {
