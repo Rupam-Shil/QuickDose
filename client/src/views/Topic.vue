@@ -122,7 +122,8 @@ const userId = computed(() => store.state.userDetails);
 const choosedTopics = ref([]);
 
 const pushToHome = () => {
-	router.push(`/${userId.value.id}`);
+	// router.push(`/${userId.value.id}`);
+	router.push(`/home`);
 };
 
 const showModal = ref(false);

@@ -124,7 +124,8 @@ const router = useRouter();
 	if (user) {
 		user = JSON.parse(user);
 		store.commit('setUserDetails', user);
-		router.push(`/${user.id}`);
+		// router.push(`/${user.id}`);
+		router.push(`/home`);
 	}
 })();
 

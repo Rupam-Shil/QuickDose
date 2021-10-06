@@ -15,6 +15,6 @@ section.homepage {
 	height: 100vh;
 	background: var(--white);
 	display: grid;
-	grid-template-columns: 20% auto;
+	grid-template-columns: 18rem auto;
 }
 </style>

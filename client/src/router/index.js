@@ -25,7 +25,7 @@ const routes = [
 		component: Topic,
 	},
 	{
-		path: '/:id',
+		path: '/home',
 		name: 'Home',
 		component: Home,
 	},

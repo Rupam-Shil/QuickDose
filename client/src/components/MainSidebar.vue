@@ -142,6 +142,26 @@ getTime();
 				border-radius: 0.2rem;
 				background: var(--very-lght-blue);
 			}
+			&.router-link-exact-active {
+				color: #000;
+				font-weight: 600;
+				position: relative;
+				&::after {
+					content: '';
+					position: absolute;
+					right: 10%;
+					top: 50%;
+					width: 10px;
+					height: 10px;
+					border-radius: 50%;
+					background: var(--dark-blue);
+					transform: translateY(-50%);
+				}
+				.icon-box {
+					background: var(--dark-blue);
+					color: var(--white);
+				}
+			}
 			&:hover {
 				color: #000;
 				font-weight: 600;
@@ -153,7 +173,7 @@ getTime();
 		}
 	}
 	.upgrade-box {
-		width: 90%;
+		width: 100%;
 		background: var(--blue-gradient);
 		border-radius: 1rem;
 		color: var(--white);
