@@ -116,18 +116,6 @@ const inputPassword = ref('');
 //store and route
 const store = useStore();
 const router = useRouter();
-// const userDetails = computed(() => store.state.userDetails);
-
-//session storage
-(() => {
-	let user = sessionStorage.getItem('userDetails');
-	if (user) {
-		user = JSON.parse(user);
-		store.commit('setUserDetails', user);
-		// router.push(`/${user.id}`);
-		router.push(`/home`);
-	}
-})();
 
 //methods
 

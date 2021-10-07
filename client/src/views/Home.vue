@@ -1,20 +1,11 @@
 <template>
-	<section class="homepage">
-		<div class="right-container"><MainSidebar /></div>
-		<div class="left-container"></div>
-	</section>
+	<div>
+		<Home> </Home>
+	</div>
 </template>
 
 <script setup>
-import MainSidebar from '../components/MainSidebar.vue';
+import Home from '../components/HomeComponent.vue';
 </script>
 
-<style lang="scss" scoped>
-section.homepage {
-	width: 100vw;
-	height: 100vh;
-	background: var(--white);
-	display: grid;
-	grid-template-columns: 18rem auto;
-}
-</style>
+<style lang="scss" scoped></style>

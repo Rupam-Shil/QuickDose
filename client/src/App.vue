@@ -11,6 +11,10 @@
 
 <script setup>
 import { ref } from 'vue';
+import { checkSessions } from './composables/checkSession.js';
+
+checkSessions();
+
 const isMobile = ref(false);
 const width = window.innerWidth;
 
