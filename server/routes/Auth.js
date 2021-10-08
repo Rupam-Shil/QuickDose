@@ -42,6 +42,25 @@ router.post(
 	}
 );
 
+router.post('/login', async (req, res) => {
+	const { email, password } = req.body;
+	const checkUser = await User.findOne({ email });
+	if (checkUser) {
+		const checkPassword = await bcrypt.compare(password, checkUser.password);
+		if (checkPassword) {
+			res.json({
+				id: checkUser.id,
+				name: checkUser.name,
+				email: checkUser.email,
+			});
+		} else {
+			res.json({ error: 'Invalid Credentials' });
+		}
+	} else {
+		res.json({ error: 'User not found' });
+	}
+});
+
 router.put('/interest', async (req, res) => {
 	try {
 		const { interest, id } = req.body;
