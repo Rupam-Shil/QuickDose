@@ -11,3 +11,7 @@ export const checkSessions = () => {
 		router.push(`/home`);
 	}
 };
+
+export const setSession = (data) => {
+	sessionStorage.setItem('userDetails', JSON.stringify(data));
+};
