@@ -92,12 +92,13 @@ import AuthLayout from '../layouts/AuthLayout.vue';
 import AuthSidebar from '../components/AuthSidebar.vue';
 import AuthRightContainer from '../components/AuthRightContainer.vue';
 import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { ref } from 'vue';
-import gsap from 'gsap';
 import { sendDataPost } from '../composables/fromAxios.js';
+
+import gsap from 'gsap';
+import Swal from 'sweetalert2';
 //data
 const isEmailVisible = ref(false);
 const isPasswordVisible = ref(false);
@@ -182,7 +183,26 @@ const sendDetails = async () => {
 		sessionStorage.setItem('userDetails', JSON.stringify(data));
 		router.push('/topic');
 	} else {
-		console.log(data.error);
+		SwalError(data.error, data.flag);
+	}
+};
+
+const SwalError = (err, flag = false) => {
+	if (!flag) {
+		Swal.fire('Oops...', err, 'error');
+	} else {
+		Swal.fire({
+			title: 'Hmmm!',
+			text: err,
+			icon: 'info',
+			showCancelButton: true,
+			confirmButtonColor: '#0062ff',
+			confirmButtonText: 'Go To Login',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				router.push('/login');
+			}
+		});
 	}
 };
 
