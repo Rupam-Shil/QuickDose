@@ -28,6 +28,6 @@ mongoose.connection
 
 app.use('/auth', auth);
 
-app.listen(process.env.PORT || 9000, () => {
+app.listen(process.env.PORT, () => {
 	console.log(`Listening on port no ${process.env.PORT}`);
 });
