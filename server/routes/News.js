@@ -4,7 +4,7 @@ const axios = require('axios');
 
 router.get('/topnews', async (req, res) => {
 	const data = await axios.get(
-		`https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.NEWSAPISECRET}`
+		`https://newsapi.org/v2/top-headlines?country=in&pageSize=50&apiKey=${process.env.NEWSAPISECRET}`
 	);
 	res.json(data.data);
 });

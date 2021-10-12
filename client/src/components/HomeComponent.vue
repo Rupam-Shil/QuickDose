@@ -3,7 +3,9 @@
 		<div class="right-container"><MainSidebar /></div>
 		<div class="left-container">
 			<TopNavBar />
-			<slot></slot>
+			<div class="main-area">
+				<slot></slot>
+			</div>
 		</div>
 	</section>
 </template>
@@ -24,15 +26,21 @@ section.homepage {
 .left-container {
 	padding: 2rem;
 	position: relative;
+	isolation: isolate;
 	&::before {
 		content: '';
 		position: absolute;
 		width: 100%;
-		height: 70vh;
+		height: 80vh;
 		background: var(--very-lght-blue);
 		bottom: 0;
 		left: 0;
 		border-radius: 1rem 0 0 0;
+		z-index: -1;
 	}
+}
+.main-area {
+	height: calc(100% - 3rem);
+	padding: 2rem 1rem 0;
 }
 </style>
