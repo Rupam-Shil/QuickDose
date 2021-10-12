@@ -10,7 +10,7 @@ const app = express();
 
 //routes
 const auth = require('./routes/Auth');
-
+const news = require('./routes/News');
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -27,6 +27,7 @@ mongoose.connection
 	});
 
 app.use('/auth', auth);
+app.use('/news', news);
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on port no ${process.env.PORT}`);

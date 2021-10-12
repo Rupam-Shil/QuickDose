@@ -6,7 +6,7 @@
 				Good <span>{{ period }}</span>
 			</h1>
 			,
-			<p>{{ userDetails.name }}</p>
+			<p>{{ userDetails.name.split(' ')[0] }}</p>
 		</div>
 		<div class="searchbar"></div>
 	</div>
