@@ -24,9 +24,10 @@ section.homepage {
 	grid-template-columns: 18rem auto;
 }
 .left-container {
-	padding: 2rem;
+	padding: 1rem 2rem 2rem;
 	position: relative;
 	isolation: isolate;
+	overflow-x: hidden;
 	&::before {
 		content: '';
 		position: absolute;
@@ -41,6 +42,6 @@ section.homepage {
 }
 .main-area {
 	height: calc(100% - 3rem);
-	padding: 2rem 1rem 0;
+	padding: 1rem 0 0 0;
 }
 </style>

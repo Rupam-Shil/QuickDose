@@ -112,8 +112,11 @@ getTime();
 		.user-image {
 			width: 50px;
 			height: 50px;
-			border-radius: 50%;
+			// border-radius: 50%;
 			background-color: #333;
+			background: url('../assets/logo.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
 		}
 		.current-date {
 			font-weight: 600;

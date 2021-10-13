@@ -7,7 +7,20 @@
 					:key="index"
 					:article="article"
 				/>
-				<Bigcard />
+			</div>
+			<div class="middlecard-section">
+				<MiddleCard
+					v-for="(article, index) in articles.splice(0, 3)"
+					:key="index"
+					:article="article"
+				/>
+			</div>
+			<div class="bigcard-section">
+				<Bigcard
+					v-for="(article, index) in articles.splice(0, 2)"
+					:key="index"
+					:article="article"
+				/>
 			</div>
 		</Home>
 	</div>
@@ -15,6 +28,7 @@
 
 <script setup>
 import Bigcard from '../components/cards/TopBigCard.vue';
+import MiddleCard from '../components/cards/MiddleSmallCard.vue';
 import Home from '../components/HomeComponent.vue';
 import { receiveDataGet } from '../composables/fromAxios';
 import { ref, onMounted } from 'vue';
@@ -37,9 +51,14 @@ fetchNews('http://localhost:5000/news/topnews');
 </script>
 
 <style lang="scss" scoped>
-.bigcard-section {
+.bigcard-section,
+.middlecard-section {
 	width: 100%;
 	display: flex;
+	justify-content: space-between;
 	gap: 2rem;
+}
+.middlecard-section {
+	margin: 1rem 0;
 }
 </style>
